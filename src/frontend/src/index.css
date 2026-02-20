@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.75rem;
+        
+        /* Sophisticated Neutral Color System - Light Mode */
+        --background: 0.99 0.002 240;
+        --foreground: 0.20 0.008 240;
+        
+        --card: 1 0 0;
+        --card-foreground: 0.20 0.008 240;
+        
+        --popover: 1 0 0;
+        --popover-foreground: 0.20 0.008 240;
+        
+        --primary: 0.35 0.035 240;
+        --primary-foreground: 0.99 0 0;
+        
+        --secondary: 0.96 0.003 240;
+        --secondary-foreground: 0.25 0.010 240;
+        
+        --muted: 0.97 0.002 240;
+        --muted-foreground: 0.52 0.008 240;
+        
+        --accent: 0.55 0.08 200;
+        --accent-foreground: 0.99 0 0;
+        
+        --destructive: 0.50 0.15 25;
+        --destructive-foreground: 0.99 0 0;
+        
+        --border: 0.92 0.003 240;
+        --input: 0.94 0.003 240;
+        --ring: 0.35 0.035 240;
+        
+        --chart-1: 0.55 0.10 220;
+        --chart-2: 0.60 0.08 200;
+        --chart-3: 0.52 0.12 180;
+        --chart-4: 0.65 0.07 260;
+        --chart-5: 0.48 0.10 40;
+        
+        --sidebar: 0.99 0.002 240;
+        --sidebar-foreground: 0.20 0.008 240;
+        --sidebar-primary: 0.35 0.035 240;
+        --sidebar-primary-foreground: 0.99 0 0;
+        --sidebar-accent: 0.96 0.003 240;
+        --sidebar-accent-foreground: 0.25 0.010 240;
+        --sidebar-border: 0.92 0.003 240;
+        --sidebar-ring: 0.35 0.035 240;
+    }
+
+    .dark {
+        /* Sophisticated Neutral Color System - Dark Mode */
+        --background: 0.12 0.008 240;
+        --foreground: 0.96 0.003 240;
+        
+        --card: 0.16 0.008 240;
+        --card-foreground: 0.96 0.003 240;
+        
+        --popover: 0.14 0.008 240;
+        --popover-foreground: 0.96 0.003 240;
+        
+        --primary: 0.65 0.08 220;
+        --primary-foreground: 0.12 0.008 240;
+        
+        --secondary: 0.20 0.008 240;
+        --secondary-foreground: 0.96 0.003 240;
+        
+        --muted: 0.18 0.008 240;
+        --muted-foreground: 0.62 0.008 240;
+        
+        --accent: 0.60 0.08 200;
+        --accent-foreground: 0.12 0.008 240;
+        
+        --destructive: 0.55 0.15 25;
+        --destructive-foreground: 0.96 0.003 240;
+        
+        --border: 0.24 0.008 240;
+        --input: 0.22 0.008 240;
+        --ring: 0.65 0.08 220;
+        
+        --chart-1: 0.60 0.10 220;
+        --chart-2: 0.65 0.08 200;
+        --chart-3: 0.57 0.12 180;
+        --chart-4: 0.70 0.07 260;
+        --chart-5: 0.53 0.10 40;
+        
+        --sidebar: 0.14 0.008 240;
+        --sidebar-foreground: 0.96 0.003 240;
+        --sidebar-primary: 0.65 0.08 220;
+        --sidebar-primary-foreground: 0.12 0.008 240;
+        --sidebar-accent: 0.20 0.008 240;
+        --sidebar-accent-foreground: 0.96 0.003 240;
+        --sidebar-border: 0.24 0.008 240;
+        --sidebar-ring: 0.65 0.08 220;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        @apply bg-background text-foreground antialiased;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        @apply font-semibold;
+        letter-spacing: -0.025em;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.animate-shimmer {
+    animation: shimmer 2s infinite linear;
+    background: linear-gradient(
+        to right,
+        oklch(var(--muted)) 0%,
+        oklch(var(--muted) / 0.5) 50%,
+        oklch(var(--muted)) 100%
+    );
+    background-size: 1000px 100%;
+}
