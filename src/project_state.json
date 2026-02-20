@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 7,
+  "projectStateVersion": 9,
   "summary": "Government-grade blockchain land registry system on Internet Computer Protocol with secure property transfers, identity verification, and multi-canister architecture",
   "architectural_notes": [
     "ICP canister-based architecture with chain-key cryptography and threshold signatures",
@@ -120,6 +120,46 @@
         "REQ-24"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-remove-all-mock-data-from-frontend-src-pages-dashboardpage-tsx-including-hardcoded-land-records-pending-transfers-and-recent-activity-arrays-replacing-them-with-actual-data-from-usequeries-hooks-or-empty-state-components-when-no-data-exists",
+      "title": "Remove all mock data from frontend/src/pages/DashboardPage.tsx including hardcoded land records, pending transfers, and recent activity arrays, replacing them with actual data from useQueries hooks or empty state components when no data exists",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-all-mock-data-fallbacks-from-frontend-src-pages-propertydetailspage-tsx-including-hardcoded-ownership-history-document-lists-and-verification-status-ensuring-the-component-only-displays-data-from-backend-queries-or-shows-appropriate-empty-states",
+      "title": "Remove all mock data fallbacks from frontend/src/pages/PropertyDetailsPage.tsx including hardcoded ownership history, document lists, and verification status, ensuring the component only displays data from backend queries or shows appropriate empty states",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-all-mock-data-from-frontend-src-pages-searchpage-tsx-including-hardcoded-search-results-arrays-replacing-them-with-actual-search-query-results-or-empty-state-displays-when-no-properties-match-the-search-criteria",
+      "title": "Remove all mock data from frontend/src/pages/SearchPage.tsx including hardcoded search results arrays, replacing them with actual search query results or empty state displays when no properties match the search criteria",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-any-stubbed-or-mock-responses-from-frontend-src-hooks-usequeries-ts-ensuring-all-query-hooks-make-genuine-calls-to-the-backend-actor-without-fallback-mock-data",
+      "title": "Remove any stubbed or mock responses from frontend/src/hooks/useQueries.ts, ensuring all query hooks make genuine calls to the backend actor without fallback mock data",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-appropriate-empty-state-components-to-dashboardpage-tsx-searchpage-tsx-and-propertydetailspage-tsx-that-display-user-friendly-messages-and-call-to-action-buttons-when-no-data-is-available",
+      "title": "Add appropriate empty state components to DashboardPage.tsx, SearchPage.tsx, and PropertyDetailsPage.tsx that display user-friendly messages and call-to-action buttons when no data is available",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -200,6 +240,12 @@
     {
       "id": "AR-13",
       "summary": "Refine UI/UX to match Google, Apple, and cloud provider design standards with polished animations, spacing, and interactive feedback",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Remove all mockup/placeholder data from the application",
       "reqIds": [],
       "status": "pending"
     }

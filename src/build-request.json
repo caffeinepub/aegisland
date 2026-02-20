@@ -1,205 +1,110 @@
 {
   "kind": "build_request",
-  "title": "Refine UI/UX to match Google, Apple, and cloud provider design standards",
+  "title": "Remove all mockup and placeholder data from the application",
   "projectName": "AegisLand",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-16",
-      "text": "Update frontend/src/index.css and frontend/tailwind.config.js to implement a refined color palette with subtle gradients and elevated depth matching modern design systems, using softer neutrals, elevated shadows (with multiple layers), and sophisticated color tokens that avoid bright primary colors in favor of understated elegance",
+      "id": "REQ-25",
+      "text": "Remove all mock data from frontend/src/pages/DashboardPage.tsx including hardcoded land records, pending transfers, and recent activity arrays, replacing them with actual data from useQueries hooks or empty state components when no data exists",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-latest"
         ],
         "quotes": [
-          "make it look and work like it was developed by google, apple and cloud"
+          "remove all mockup data"
         ]
       },
       "acceptanceCriteria": [
-        "Color palette uses sophisticated neutrals with subtle color accents",
-        "Shadow system includes multiple elevation levels (sm, md, lg, xl, 2xl) with soft, layered shadows",
-        "Design avoids overly saturated colors in favor of muted, professional tones",
-        "Theme tokens support both light and dark modes with proper contrast ratios"
+        "DashboardPage.tsx contains no hardcoded mock data arrays",
+        "All displayed data comes from React Query hooks or shows empty states",
+        "Loading states correctly handle the transition from loading to empty/populated states"
       ]
     },
     {
-      "id": "REQ-17",
-      "text": "Refine all page components (HomePage.tsx, DashboardPage.tsx, SearchPage.tsx, PropertyDetailsPage.tsx, RegisterPage.tsx, TransferPage.tsx) with polished spacing using consistent padding scale (4, 8, 12, 16, 24, 32, 48, 64px), refined typography hierarchy with proper font weights and line heights, and generous whitespace between sections",
+      "id": "REQ-26",
+      "text": "Remove all mock data fallbacks from frontend/src/pages/PropertyDetailsPage.tsx including hardcoded ownership history, document lists, and verification status, ensuring the component only displays data from backend queries or shows appropriate empty states",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-latest"
         ],
         "quotes": [
-          "make it look and work like it was developed by google, apple and cloud"
+          "remove all mockup data"
         ]
       },
       "acceptanceCriteria": [
-        "All pages use a consistent spacing scale with no arbitrary values",
-        "Typography follows a clear hierarchy with appropriate font sizes, weights, and line heights",
-        "Sections have generous breathing room with proper margin/padding between content blocks",
-        "Content width is constrained to readable measures (max-w-7xl or similar) on large screens"
+        "PropertyDetailsPage.tsx contains no mock data fallbacks",
+        "Component displays only real data from queries or empty state messaging",
+        "Error handling is in place for missing or invalid property IDs"
       ]
     },
     {
-      "id": "REQ-18",
-      "text": "Add smooth micro-interactions and polished animations to all interactive elements including buttons, cards, form inputs, and navigation items with subtle scale transforms on hover (scale-[1.02]), smooth color transitions (transition-all duration-200), and tactile feedback using transform and shadow changes",
+      "id": "REQ-27",
+      "text": "Remove all mock data from frontend/src/pages/SearchPage.tsx including hardcoded search results arrays, replacing them with actual search query results or empty state displays when no properties match the search criteria",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-latest"
         ],
         "quotes": [
-          "make it look and work like it was developed by google, apple and cloud"
+          "remove all mockup data"
         ]
       },
       "acceptanceCriteria": [
-        "All buttons include hover and active states with smooth transitions",
-        "Cards have subtle hover effects with elevation changes",
-        "Form inputs show clear focus states with smooth border/shadow animations",
-        "Navigation items respond to hover with appropriate visual feedback",
-        "All animations use consistent timing functions (ease-in-out or cubic-bezier curves)"
+        "SearchPage.tsx contains no mock search results",
+        "Search results come exclusively from backend search queries",
+        "Empty state is shown when searches return no results"
       ]
     },
     {
-      "id": "REQ-19",
-      "text": "Enhance Header.tsx and Footer.tsx with refined layouts including proper alignment, balanced spacing, subtle backdrop blur effects for the header, and refined mobile responsiveness with smooth menu transitions",
+      "id": "REQ-28",
+      "text": "Remove any stubbed or mock responses from frontend/src/hooks/useQueries.ts, ensuring all query hooks make genuine calls to the backend actor without fallback mock data",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-latest"
         ],
         "quotes": [
-          "make it look and work like it was developed by google, apple and cloud"
+          "remove all mockup data"
         ]
       },
       "acceptanceCriteria": [
-        "Header includes backdrop blur and subtle shadow for depth",
-        "Navigation items are properly aligned with consistent spacing",
-        "Mobile menu transitions smoothly with slide or fade animations",
-        "Footer layout is balanced with clear visual hierarchy",
-        "All interactive elements have appropriate hover states"
+        "useQueries.ts contains no mock data or stubbed responses",
+        "All queries attempt to fetch real data from the backend actor",
+        "Error states are properly handled when backend calls fail"
       ]
     },
     {
-      "id": "REQ-20",
-      "text": "Refine form components in RegisterPage.tsx and TransferPage.tsx with polished input styling including refined borders, proper focus rings with brand colors, floating labels or clear placeholder text, inline validation feedback with smooth transitions, and cohesive button styling matching the overall design system",
+      "id": "REQ-29",
+      "text": "Add appropriate empty state components to DashboardPage.tsx, SearchPage.tsx, and PropertyDetailsPage.tsx that display user-friendly messages and call-to-action buttons when no data is available",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-latest"
         ],
         "quotes": [
-          "make it look and work like it was developed by google, apple and cloud"
+          "remove all mockup data"
         ]
       },
       "acceptanceCriteria": [
-        "Form inputs have refined borders with smooth focus state transitions",
-        "Focus rings use brand colors and proper visibility",
-        "Labels and placeholders are clearly legible and well-positioned",
-        "Validation messages appear with smooth fade-in animations",
-        "Submit buttons have clear loading states with spinners or progress indicators",
-        "Form layout uses consistent spacing and alignment"
-      ]
-    },
-    {
-      "id": "REQ-21",
-      "text": "Add skeleton loading states to all data-fetching components (DashboardPage.tsx, SearchPage.tsx, PropertyDetailsPage.tsx) using shimmer animations and content placeholders that match the final content structure, ensuring smooth transitions from loading to loaded states",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "make it look and work like it was developed by google, apple and cloud"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Skeleton loaders match the structure and dimensions of actual content",
-        "Shimmer animation uses subtle gradient motion for visual polish",
-        "Transition from skeleton to content is smooth without layout shift",
-        "Loading states appear immediately without flash of empty content",
-        "Multiple skeleton items are rendered when lists are loading"
-      ]
-    },
-    {
-      "id": "REQ-22",
-      "text": "Implement smooth page transitions and scroll behaviors across all routes in App.tsx using CSS transitions or animation libraries, with fade-in effects for new page content and smooth scrolling for in-page navigation",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "make it look and work like it was developed by google, apple and cloud"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Page transitions include subtle fade or slide effects when navigating between routes",
-        "Scroll behavior is smooth for anchor links and programmatic scrolling",
-        "Page content fades in smoothly on initial render",
-        "Route transitions do not cause jarring content shifts",
-        "Animation timing is consistent across all transitions (typically 150-300ms)"
-      ]
-    },
-    {
-      "id": "REQ-23",
-      "text": "Refine card components across all pages with elevated shadows, subtle border radius (rounded-lg or rounded-xl), proper internal padding, and hover states that include scale and shadow transitions to create depth and interactivity",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "make it look and work like it was developed by google, apple and cloud"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All cards use consistent border radius and shadow values",
-        "Card shadows include multiple layers for realistic depth",
-        "Hover states smoothly increase elevation with transform and shadow changes",
-        "Internal card padding creates comfortable content spacing",
-        "Card backgrounds use subtle color differentiation from page background"
-      ]
-    },
-    {
-      "id": "REQ-24",
-      "text": "Enhance responsive design across all pages to ensure layouts adapt gracefully to different screen sizes with appropriate breakpoints (sm, md, lg, xl, 2xl), mobile-first design patterns, and touch-friendly interface elements with adequate tap target sizes (minimum 44x44px)",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-latest"
-        ],
-        "quotes": [
-          "make it look and work like it was developed by google, apple and cloud"
-        ]
-      },
-      "acceptanceCriteria": [
-        "All layouts follow mobile-first design principles",
-        "Content reflows naturally at all breakpoints without horizontal scrolling",
-        "Interactive elements meet minimum touch target size requirements on mobile",
-        "Navigation adapts appropriately for mobile (hamburger menu) and desktop (horizontal nav)",
-        "Grid layouts adjust column counts based on screen size",
-        "Typography scales appropriately across breakpoints"
+        "Each page has a dedicated empty state component with clear messaging",
+        "Empty states include helpful CTAs (e.g., 'Register your first property')",
+        "Empty states match the refined design system with proper spacing and typography"
       ]
     }
   ],
   "constraints": [
-    "Do not modify frontend/src/hooks/useInternetIdentity.ts or frontend/src/hooks/useActor.ts",
-    "Do not modify frontend/src/main.tsx",
-    "Do not modify any files in frontend/src/components/ui directory",
-    "Preserve all existing React Query hooks functionality in frontend/src/hooks/useQueries.ts",
-    "Maintain existing authentication flows and Internet Identity integration",
-    "Do not change backend/main.mo actor structure"
+    "Do not modify frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui components",
+    "Preserve all existing React Query configurations including refetch intervals and optimistic updates",
+    "Maintain the refined design system including colors, shadows, spacing, and animations"
   ],
   "nonGoals": [
-    "Changing the technology stack or framework",
-    "Implementing new backend features or data models",
-    "Adding new pages or major functional components",
-    "Redesigning the information architecture or user flows",
-    "Changing the color scheme to use blue and purple gradients",
-    "Adding third-party animation libraries beyond Tailwind's built-in capabilities"
+    "Adding new backend functionality or data models",
+    "Changing the authentication flow or Internet Identity integration",
+    "Modifying the routing structure or navigation components",
+    "Implementing new features beyond removing mock data"
   ],
   "imageRequirements": {
     "required": [],

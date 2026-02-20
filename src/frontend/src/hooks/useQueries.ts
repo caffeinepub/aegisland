@@ -11,8 +11,7 @@ export function useGetAllLandRecords() {
     queryKey: ['landRecords'],
     queryFn: async () => {
       if (!actor) return [];
-      // TODO: Replace with actual backend call
-      // return actor.getAllLandRecords();
+      // Backend call - returns empty array until backend implements this method
       return [];
     },
     enabled: !!actor && !isFetching,
@@ -29,8 +28,7 @@ export function useGetLandRecord(parcelId: string) {
     queryKey: ['landRecord', parcelId],
     queryFn: async () => {
       if (!actor) return null;
-      // TODO: Replace with actual backend call
-      // return actor.getLandRecord(parcelId);
+      // Backend call - returns null until backend implements this method
       return null;
     },
     enabled: !!actor && !isFetching && !!parcelId,
@@ -47,8 +45,7 @@ export function useSearchLandRecords(query: string) {
     queryKey: ['searchLandRecords', query],
     queryFn: async () => {
       if (!actor) return [];
-      // TODO: Replace with actual backend call
-      // return actor.searchLandRecords(query);
+      // Backend call - returns empty array until backend implements this method
       return [];
     },
     enabled: !!actor && !isFetching && !!query,
@@ -69,9 +66,8 @@ export function useRegisterLandParcel() {
       deedHash: string;
     }) => {
       if (!actor) throw new Error('Actor not initialized');
-      // TODO: Replace with actual backend call
-      // return actor.registerLandParcel(data.parcelId, data.geoCoordinates, data.deedHash);
-      return data;
+      // Backend call - throws error until backend implements this method
+      throw new Error('Backend method not yet implemented');
     },
     onMutate: async (newProperty) => {
       // Cancel outgoing refetches to avoid overwriting optimistic update
@@ -123,9 +119,8 @@ export function useTransferOwnership() {
   return useMutation({
     mutationFn: async (data: { parcelId: string; newOwner: string }) => {
       if (!actor) throw new Error('Actor not initialized');
-      // TODO: Replace with actual backend call
-      // return actor.transferOwnership(data.parcelId, data.newOwner);
-      return data;
+      // Backend call - throws error until backend implements this method
+      throw new Error('Backend method not yet implemented');
     },
     onMutate: async (transferData) => {
       // Cancel outgoing refetches
@@ -200,8 +195,7 @@ export function useGetUserProfile() {
     queryKey: ['userProfile'],
     queryFn: async () => {
       if (!actor) return null;
-      // TODO: Replace with actual backend call
-      // return actor.getUserProfile();
+      // Backend call - returns null until backend implements this method
       return null;
     },
     enabled: !!actor && !isFetching,
@@ -218,8 +212,7 @@ export function useGetPendingTransfers() {
     queryKey: ['pendingTransfers'],
     queryFn: async () => {
       if (!actor) return [];
-      // TODO: Replace with actual backend call
-      // return actor.getPendingTransfers();
+      // Backend call - returns empty array until backend implements this method
       return [];
     },
     enabled: !!actor && !isFetching,

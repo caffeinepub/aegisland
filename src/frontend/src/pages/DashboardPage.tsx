@@ -4,11 +4,11 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Link, useNavigate } from '@tanstack/react-router';
-import { Home, FileText, ArrowRightLeft, Plus, Shield, AlertCircle, Loader2 } from 'lucide-react';
+import { Home, FileText, ArrowRightLeft, Plus, Shield, AlertCircle, Loader2, Activity } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useGetAllLandRecords, useGetPendingTransfers, useGetUserProfile } from '../hooks/useQueries';
-import { useEffect } from 'react';
+import { EmptyState } from '../components/EmptyState';
 
 export default function DashboardPage() {
   const { identity, login } = useInternetIdentity();
@@ -44,47 +44,8 @@ export default function DashboardPage() {
     );
   }
 
-  const userProperties = [
-    {
-      parcelId: 'LR-2026-001234',
-      location: 'Nairobi, Kenya',
-      area: '2.5 acres',
-      status: 'ACTIVE',
-      registrationDate: '2024-03-15',
-    },
-    {
-      parcelId: 'LR-2026-001567',
-      location: 'Mombasa, Kenya',
-      area: '1.2 acres',
-      status: 'ACTIVE',
-      registrationDate: '2023-08-22',
-    },
-  ];
-
-  const mockPendingTransfers = [
-    {
-      parcelId: 'LR-2026-001234',
-      type: 'Outgoing',
-      buyer: 'Jane Smith',
-      status: 'Pending Payment',
-      initiatedDate: '2026-02-15',
-    },
-  ];
-
-  const recentActivity = [
-    {
-      action: 'Property Registered',
-      parcelId: 'LR-2026-001567',
-      date: '2023-08-22',
-      status: 'Completed',
-    },
-    {
-      action: 'Transfer Initiated',
-      parcelId: 'LR-2026-001234',
-      date: '2026-02-15',
-      status: 'Pending',
-    },
-  ];
+  const userProperties = landRecords || [];
+  const transfers = pendingTransfers || [];
 
   const isLoading = isLoadingRecords || isLoadingTransfers || isLoadingProfile;
   const isSyncing = (isFetchingRecords || isFetchingTransfers || isFetchingProfile) && !isLoading;
@@ -156,7 +117,7 @@ export default function DashboardPage() {
             <Card className="shadow-sm transition-all duration-200 hover:shadow-md">
               <CardHeader className="pb-3">
                 <CardDescription className="text-sm">Pending Transfers</CardDescription>
-                <CardTitle className="text-4xl">{mockPendingTransfers.length}</CardTitle>
+                <CardTitle className="text-4xl">{transfers.length}</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -168,7 +129,7 @@ export default function DashboardPage() {
             <Card className="shadow-sm transition-all duration-200 hover:shadow-md">
               <CardHeader className="pb-3">
                 <CardDescription className="text-sm">Documents</CardDescription>
-                <CardTitle className="text-4xl">4</CardTitle>
+                <CardTitle className="text-4xl">0</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -225,9 +186,19 @@ export default function DashboardPage() {
               <PropertyCardSkeleton />
               <PropertyCardSkeleton />
             </div>
+          ) : userProperties.length === 0 ? (
+            <EmptyState
+              icon={Home}
+              title="No properties registered yet"
+              description="Get started by registering your first property on the blockchain. Your land records will be securely stored and easily accessible."
+              action={{
+                label: 'Register Property',
+                onClick: () => navigate({ to: '/register' }),
+              }}
+            />
           ) : (
             <div className="grid gap-6">
-              {userProperties.map((property) => (
+              {userProperties.map((property: any) => (
                 <Card 
                   key={property.parcelId}
                   className="shadow-sm transition-all duration-200 hover:shadow-md"
@@ -286,9 +257,15 @@ export default function DashboardPage() {
           <h2 className="text-xl font-semibold">Pending Transfers</h2>
           {isLoading ? (
             <PropertyCardSkeleton />
+          ) : transfers.length === 0 ? (
+            <EmptyState
+              icon={ArrowRightLeft}
+              title="No pending transfers"
+              description="You don't have any property transfers in progress. When you initiate a transfer, it will appear here."
+            />
           ) : (
             <div className="grid gap-6">
-              {mockPendingTransfers.map((transfer) => (
+              {transfers.map((transfer: any) => (
                 <Card 
                   key={transfer.parcelId}
                   className="shadow-sm transition-all duration-200 hover:shadow-md"
@@ -340,31 +317,11 @@ export default function DashboardPage() {
               </Card>
             </div>
           ) : (
-            <div className="grid gap-4">
-              {recentActivity.map((activity, index) => (
-                <Card 
-                  key={index}
-                  className="shadow-sm transition-all duration-200 hover:shadow-md"
-                >
-                  <CardContent className="py-6">
-                    <div className="flex items-center justify-between">
-                      <div className="space-y-1">
-                        <div className="font-medium">{activity.action}</div>
-                        <div className="text-sm text-muted-foreground">
-                          {activity.parcelId} • {activity.date}
-                        </div>
-                      </div>
-                      <Badge 
-                        variant={activity.status === 'Completed' ? 'default' : 'outline'}
-                        className="text-xs"
-                      >
-                        {activity.status}
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <EmptyState
+              icon={Activity}
+              title="No recent activity"
+              description="Your property transactions and updates will appear here. Start by registering a property or initiating a transfer."
+            />
           )}
         </TabsContent>
       </Tabs>

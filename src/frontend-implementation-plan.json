@@ -1,332 +1,100 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Refine UI/UX to match Google, Apple, and cloud provider design standards",
+  "title": "Remove all mockup and placeholder data from the application",
   "requirements": [
     {
-      "id": "REQ-16",
-      "summary": "Update global styles and Tailwind configuration with refined color palette, sophisticated neutrals, multi-layer shadows, and subtle gradients matching modern design systems",
+      "id": "REQ-25",
+      "summary": "Remove all mock data from DashboardPage.tsx, replacing with actual data from useQueries hooks or empty state components",
       "acceptanceCriteria": [
-        "Color palette uses sophisticated neutrals with subtle color accents",
-        "Shadow system includes multiple elevation levels (sm, md, lg, xl, 2xl) with soft, layered shadows",
-        "Design avoids overly saturated colors in favor of muted, professional tones",
-        "Theme tokens support both light and dark modes with proper contrast ratios"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Refine CSS custom properties to use softer neutral color tokens with reduced saturation, implement sophisticated OKLCH color values for subtle elegance, and ensure proper contrast ratios for both light and dark themes. Replace bright primary colors with understated tones while maintaining accessibility."
-        },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Extend theme configuration with multi-layer shadow system including sm, md, lg, xl, and 2xl elevation levels using soft, layered shadow definitions. Add subtle gradient utilities and refined color tokens that support the sophisticated neutral palette. Configure shadow colors to use semi-transparent values for realistic depth."
-        }
-      ]
-    },
-    {
-      "id": "REQ-17",
-      "summary": "Refine all page components with consistent spacing scale, refined typography hierarchy, and generous whitespace between sections",
-      "acceptanceCriteria": [
-        "All pages use a consistent spacing scale with no arbitrary values",
-        "Typography follows a clear hierarchy with appropriate font sizes, weights, and line heights",
-        "Sections have generous breathing room with proper margin/padding between content blocks",
-        "Content width is constrained to readable measures (max-w-7xl or similar) on large screens"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Apply consistent spacing scale (4, 8, 12, 16, 24, 32, 48, 64px) throughout the hero section and feature cards. Refine typography hierarchy with proper font weights (font-medium, font-semibold, font-bold) and line heights (leading-tight, leading-relaxed). Add generous whitespace between hero and features sections. Constrain content width using max-w-7xl or max-w-6xl for readable measures on large screens."
-        },
-        {
-          "path": "frontend/src/pages/DashboardPage.tsx",
-          "operation": "modify",
-          "description": "Implement consistent spacing scale for property cards, activity sections, and pending transfers. Refine typography with proper heading hierarchy (text-2xl, text-xl, text-lg) and appropriate font weights. Add generous padding and margin between sections (py-8, py-12) for breathing room. Ensure content containers use max-w-7xl for optimal readability."
-        },
-        {
-          "path": "frontend/src/pages/SearchPage.tsx",
-          "operation": "modify",
-          "description": "Apply consistent spacing scale to search input, results grid, and empty states. Refine typography for search results with clear hierarchy between property titles, details, and status badges. Add generous spacing between search bar and results (mb-8 or mb-12). Use proper line heights for multi-line text content."
-        },
-        {
-          "path": "frontend/src/pages/PropertyDetailsPage.tsx",
-          "operation": "modify",
-          "description": "Implement consistent spacing throughout property information sections, ownership history, and document lists. Refine typography hierarchy with distinct heading levels and appropriate font weights. Add generous padding within content blocks and margin between sections. Constrain content width for optimal readability on large displays."
-        },
-        {
-          "path": "frontend/src/pages/RegisterPage.tsx",
-          "operation": "modify",
-          "description": "Apply consistent spacing scale to form container, input groups, and button areas. Refine typography for form labels, helper text, and headings with proper font sizes and weights. Add generous padding around the form (p-8 or p-12) and spacing between form fields (space-y-6)."
-        },
-        {
-          "path": "frontend/src/pages/TransferPage.tsx",
-          "operation": "modify",
-          "description": "Implement consistent spacing for form layout, confirmation sections, and action buttons. Refine typography hierarchy for transfer details and validation messages. Add generous whitespace between form sections and adequate padding around the form container."
-        }
-      ]
-    },
-    {
-      "id": "REQ-18",
-      "summary": "Add smooth micro-interactions and polished animations to all interactive elements with subtle transforms, color transitions, and tactile feedback",
-      "acceptanceCriteria": [
-        "All buttons include hover and active states with smooth transitions",
-        "Cards have subtle hover effects with elevation changes",
-        "Form inputs show clear focus states with smooth border/shadow animations",
-        "Navigation items respond to hover with appropriate visual feedback",
-        "All animations use consistent timing functions (ease-in-out or cubic-bezier curves)"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Add smooth hover animations to feature cards with scale transforms (hover:scale-[1.02]) and elevation changes using shadow transitions. Apply transition-all duration-200 ease-in-out to all interactive elements. Include tactile feedback on call-to-action buttons with active:scale-[0.98] states."
-        },
-        {
-          "path": "frontend/src/pages/DashboardPage.tsx",
-          "operation": "modify",
-          "description": "Implement smooth hover effects on property cards with subtle scale and shadow transitions. Add transition-all duration-200 to all interactive elements including action buttons and clickable cards. Ensure smooth color transitions on button hover states."
-        },
-        {
-          "path": "frontend/src/pages/SearchPage.tsx",
-          "operation": "modify",
-          "description": "Add smooth hover effects to search result cards with scale-[1.02] and shadow elevation changes. Implement transition-all duration-200 on all clickable elements. Add smooth focus states to the search input with border and shadow animations."
-        },
-        {
-          "path": "frontend/src/pages/PropertyDetailsPage.tsx",
-          "operation": "modify",
-          "description": "Apply smooth transitions to all interactive elements including action buttons and expandable sections. Use transition-all duration-200 ease-in-out for consistent timing. Add tactile feedback with active states on buttons."
-        },
-        {
-          "path": "frontend/src/pages/RegisterPage.tsx",
-          "operation": "modify",
-          "description": "Implement smooth focus states on all form inputs with border and shadow animations using transition-all duration-200. Add hover effects to the submit button with subtle scale and color transitions. Include smooth validation message appearances with fade transitions."
-        },
-        {
-          "path": "frontend/src/pages/TransferPage.tsx",
-          "operation": "modify",
-          "description": "Add smooth transitions to form inputs with focus state animations. Implement hover and active states on action buttons with scale and color transitions. Use transition-all duration-200 for consistent animation timing across all interactive elements."
-        },
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Add smooth hover effects to navigation links with color and underline transitions using transition-all duration-200. Implement tactile feedback on authentication buttons and theme toggle with scale transforms. Ensure mobile menu items have smooth hover states."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Implement smooth hover effects on footer links and social media icons with color and transform transitions. Use transition-all duration-200 ease-in-out for consistent timing. Add subtle scale transforms (hover:scale-110) to social icons."
-        }
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "summary": "Enhance Header and Footer with refined layouts, backdrop blur effects, balanced spacing, and smooth mobile menu transitions",
-      "acceptanceCriteria": [
-        "Header includes backdrop blur and subtle shadow for depth",
-        "Navigation items are properly aligned with consistent spacing",
-        "Mobile menu transitions smoothly with slide or fade animations",
-        "Footer layout is balanced with clear visual hierarchy",
-        "All interactive elements have appropriate hover states"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Add backdrop-blur-md and subtle shadow (shadow-sm) to the header for elevated depth. Refine navigation item alignment with consistent spacing using space-x-6 or gap-6. Implement smooth mobile menu transitions with slide-in animation using transform and transition properties. Ensure proper vertical alignment of logo, nav links, and action buttons."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Refine footer layout with balanced spacing between sections using consistent gap values. Establish clear visual hierarchy with distinct heading sizes and weights for section titles. Ensure proper alignment of link columns and social media icons. Add appropriate padding (py-12 or py-16) for vertical breathing room."
-        }
-      ]
-    },
-    {
-      "id": "REQ-20",
-      "summary": "Refine form components with polished input styling, proper focus rings, smooth validation feedback, and cohesive button design",
-      "acceptanceCriteria": [
-        "Form inputs have refined borders with smooth focus state transitions",
-        "Focus rings use brand colors and proper visibility",
-        "Labels and placeholders are clearly legible and well-positioned",
-        "Validation messages appear with smooth fade-in animations",
-        "Submit buttons have clear loading states with spinners or progress indicators",
-        "Form layout uses consistent spacing and alignment"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/RegisterPage.tsx",
-          "operation": "modify",
-          "description": "Refine input borders with subtle border colors and smooth focus ring transitions using brand colors (ring-2 ring-primary). Ensure labels are clearly positioned above or as floating labels with proper spacing. Implement inline validation feedback with smooth fade-in transitions (transition-opacity duration-200). Add clear loading state to submit button with spinner icon. Use consistent spacing between form fields (space-y-6) and proper label-input alignment."
-        },
-        {
-          "path": "frontend/src/pages/TransferPage.tsx",
-          "operation": "modify",
-          "description": "Apply polished input styling with refined borders and smooth focus rings using brand colors. Ensure placeholder text is clearly legible with appropriate contrast. Implement validation messages with smooth fade-in animations. Add loading state indicator to the transfer button with spinner. Maintain consistent form spacing and field alignment."
-        }
-      ]
-    },
-    {
-      "id": "REQ-21",
-      "summary": "Add skeleton loading states with shimmer animations to all data-fetching components, ensuring smooth transitions from loading to loaded states",
-      "acceptanceCriteria": [
-        "Skeleton loaders match the structure and dimensions of actual content",
-        "Shimmer animation uses subtle gradient motion for visual polish",
-        "Transition from skeleton to content is smooth without layout shift",
-        "Loading states appear immediately without flash of empty content",
-        "Multiple skeleton items are rendered when lists are loading"
+        "DashboardPage.tsx contains no hardcoded mock data arrays",
+        "All displayed data comes from React Query hooks or shows empty states",
+        "Loading states correctly handle the transition from loading to empty/populated states"
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/DashboardPage.tsx",
           "operation": "modify",
-          "description": "Add skeleton loading states that match the structure of property cards, activity items, and transfer lists. Implement shimmer animation using animated gradient backgrounds (animate-pulse or custom keyframe animation). Ensure skeletons have the same dimensions as actual content to prevent layout shift. Render multiple skeleton items (3-5) when loading lists. Add smooth fade-in transition when replacing skeletons with real content."
-        },
-        {
-          "path": "frontend/src/pages/SearchPage.tsx",
-          "operation": "modify",
-          "description": "Implement skeleton loaders for search results that match the card structure and dimensions. Add shimmer animation with subtle gradient motion for visual polish. Ensure smooth transition from skeleton to actual search results without layout shift. Render multiple skeleton cards during loading state."
-        },
-        {
-          "path": "frontend/src/pages/PropertyDetailsPage.tsx",
-          "operation": "modify",
-          "description": "Add comprehensive skeleton loading states for property header, detail sections, ownership history, and document lists. Implement shimmer animations on all skeleton elements. Ensure skeleton structure matches final content layout to prevent shift. Include smooth fade-in transition when content loads."
+          "description": "Remove all hardcoded mock data arrays including land records, pending transfers, and recent activity. Replace with data fetched exclusively from useQueries hooks. Add conditional rendering to display empty state components when arrays are empty or undefined. Ensure loading states properly transition to either populated data views or empty states."
         }
       ]
     },
     {
-      "id": "REQ-22",
-      "summary": "Implement smooth page transitions and scroll behaviors across all routes with fade effects and smooth scrolling",
+      "id": "REQ-26",
+      "summary": "Remove all mock data fallbacks from PropertyDetailsPage.tsx, ensuring only real backend data or empty states are displayed",
       "acceptanceCriteria": [
-        "Page transitions include subtle fade or slide effects when navigating between routes",
-        "Scroll behavior is smooth for anchor links and programmatic scrolling",
-        "Page content fades in smoothly on initial render",
-        "Route transitions do not cause jarring content shifts",
-        "Animation timing is consistent across all transitions (typically 150-300ms)"
+        "PropertyDetailsPage.tsx contains no mock data fallbacks",
+        "Component displays only real data from queries or empty state messaging",
+        "Error handling is in place for missing or invalid property IDs"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add smooth page transition wrapper around Outlet component with fade-in effect using CSS transitions or TanStack Router's transition options. Configure scroll restoration behavior to be smooth. Implement global scroll behavior using scroll-smooth on the html element. Ensure consistent transition timing (200-300ms) across all route changes."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Add fade-in animation on initial page render using opacity transitions or CSS animation. Ensure content appears smoothly without jarring jumps. Implement smooth scrolling for any in-page navigation or anchor links."
-        },
-        {
-          "path": "frontend/src/pages/DashboardPage.tsx",
-          "operation": "modify",
-          "description": "Implement fade-in effect on page content render. Add smooth scroll behavior for any programmatic scrolling to sections. Ensure transitions are smooth when switching between tabs or sections."
-        },
-        {
-          "path": "frontend/src/pages/SearchPage.tsx",
-          "operation": "modify",
-          "description": "Add fade-in animation on page render. Implement smooth scrolling when search results are loaded or when navigating to specific results."
-        },
-        {
           "path": "frontend/src/pages/PropertyDetailsPage.tsx",
           "operation": "modify",
-          "description": "Implement fade-in effect on page content. Add smooth scrolling for navigation between property sections or document anchors."
-        },
-        {
-          "path": "frontend/src/pages/RegisterPage.tsx",
-          "operation": "modify",
-          "description": "Add fade-in animation on page render. Ensure smooth transitions when showing success confirmation or validation states."
-        },
-        {
-          "path": "frontend/src/pages/TransferPage.tsx",
-          "operation": "modify",
-          "description": "Implement fade-in effect on page content. Add smooth transitions when moving between form steps or showing confirmation."
+          "description": "Remove all mock data fallbacks including hardcoded ownership history, document lists, and verification status. Ensure the component only displays data fetched from backend queries via useQueries hooks. Add error handling for invalid or missing property IDs that shows user-friendly error messages. Add empty state displays when ownership history or documents are unavailable."
         }
       ]
     },
     {
-      "id": "REQ-23",
-      "summary": "Refine card components with elevated shadows, subtle border radius, proper padding, and hover states with scale and shadow transitions",
+      "id": "REQ-27",
+      "summary": "Remove all mock data from SearchPage.tsx, replacing with actual search query results or empty state displays",
       "acceptanceCriteria": [
-        "All cards use consistent border radius and shadow values",
-        "Card shadows include multiple layers for realistic depth",
-        "Hover states smoothly increase elevation with transform and shadow changes",
-        "Internal card padding creates comfortable content spacing",
-        "Card backgrounds use subtle color differentiation from page background"
+        "SearchPage.tsx contains no mock search results",
+        "Search results come exclusively from backend search queries",
+        "Empty state is shown when searches return no results"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Refine feature cards with consistent border radius (rounded-lg or rounded-xl) and elevated multi-layer shadows (shadow-lg or custom shadow). Add proper internal padding (p-6 or p-8) for comfortable content spacing. Implement hover states that increase elevation with shadow-xl and subtle scale transform (hover:scale-[1.02]). Use subtle background color differentiation from page background."
-        },
-        {
-          "path": "frontend/src/pages/DashboardPage.tsx",
-          "operation": "modify",
-          "description": "Apply consistent border radius and multi-layer shadows to property cards, activity items, and transfer cards. Add proper internal padding (p-6) for content spacing. Implement hover effects with smooth shadow and scale transitions. Ensure card backgrounds have subtle color contrast with page background."
-        },
-        {
           "path": "frontend/src/pages/SearchPage.tsx",
           "operation": "modify",
-          "description": "Refine search result cards with consistent rounded corners and elevated shadows. Add comfortable internal padding (p-6). Implement smooth hover states with shadow and scale transitions (hover:shadow-xl hover:scale-[1.02]). Use subtle background colors for visual hierarchy."
-        },
-        {
-          "path": "frontend/src/pages/PropertyDetailsPage.tsx",
-          "operation": "modify",
-          "description": "Apply refined card styling to information sections, history items, and document cards. Use consistent border radius and multi-layer shadows. Add proper padding for content spacing. Implement hover states where appropriate with smooth transitions."
+          "description": "Remove all hardcoded mock search results arrays. Replace with search results fetched exclusively from useQueries search hooks. Add conditional rendering to display an empty state component when search queries return no results or empty arrays. Preserve existing loading states and ensure they properly transition to either results or empty states."
         }
       ]
     },
     {
-      "id": "REQ-24",
-      "summary": "Enhance responsive design with graceful layout adaptation, mobile-first patterns, and touch-friendly interface elements",
+      "id": "REQ-28",
+      "summary": "Remove any stubbed or mock responses from useQueries.ts, ensuring all query hooks make genuine backend actor calls",
       "acceptanceCriteria": [
-        "All layouts follow mobile-first design principles",
-        "Content reflows naturally at all breakpoints without horizontal scrolling",
-        "Interactive elements meet minimum touch target size requirements on mobile",
-        "Navigation adapts appropriately for mobile (hamburger menu) and desktop (horizontal nav)",
-        "Grid layouts adjust column counts based on screen size",
-        "Typography scales appropriately across breakpoints"
+        "useQueries.ts contains no mock data or stubbed responses",
+        "All queries attempt to fetch real data from the backend actor",
+        "Error states are properly handled when backend calls fail"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/HomePage.tsx",
+          "path": "frontend/src/hooks/useQueries.ts",
           "operation": "modify",
-          "description": "Implement mobile-first responsive design with base styles for mobile, then progressive enhancement for larger screens. Ensure hero section and feature grid reflow naturally (grid-cols-1 sm:grid-cols-2 lg:grid-cols-3). Make all buttons and interactive elements at least 44x44px on mobile. Scale typography appropriately (text-base md:text-lg lg:text-xl). Prevent horizontal scrolling at all breakpoints."
+          "description": "Remove all stubbed responses and mock data fallbacks from query hooks. Ensure all React Query hooks make genuine calls to the backend actor without any mock data fallbacks. Implement proper error handling that surfaces backend call failures to the UI through React Query error states. Preserve existing optimistic update configurations and refetch intervals."
+        }
+      ]
+    },
+    {
+      "id": "REQ-29",
+      "summary": "Add appropriate empty state components to pages that display user-friendly messages and CTAs when no data is available",
+      "acceptanceCriteria": [
+        "Each page has a dedicated empty state component with clear messaging",
+        "Empty states include helpful CTAs (e.g., 'Register your first property')",
+        "Empty states match the refined design system with proper spacing and typography"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/EmptyState.tsx",
+          "operation": "create",
+          "description": "Create a reusable EmptyState component that accepts props for icon, title, description, and optional CTA button configuration. Style the component using the refined design system with proper OKLCH colors, spacing, and typography. Include subtle animations for the icon and ensure the component is responsive across all screen sizes."
         },
         {
           "path": "frontend/src/pages/DashboardPage.tsx",
           "operation": "modify",
-          "description": "Apply mobile-first responsive patterns to property grids, activity lists, and transfer sections. Adjust grid column counts by screen size (grid-cols-1 md:grid-cols-2 lg:grid-cols-3). Ensure touch-friendly tap targets on mobile (min-w-11 min-h-11 or larger). Scale typography across breakpoints. Ensure content never causes horizontal scrolling."
+          "description": "Import and integrate the EmptyState component to display when the user has no land records, pending transfers, or recent activity. Configure empty states with appropriate messages like 'No properties registered yet' with a CTA button linking to the register page. Ensure empty states are shown conditionally based on data availability after loading completes."
         },
         {
           "path": "frontend/src/pages/SearchPage.tsx",
           "operation": "modify",
-          "description": "Implement mobile-first responsive design for search input and results grid. Adjust result card columns by breakpoint (grid-cols-1 md:grid-cols-2 lg:grid-cols-3). Ensure search button and filters are touch-friendly on mobile. Scale typography appropriately. Prevent horizontal overflow."
+          "description": "Import and integrate the EmptyState component to display when search queries return no results. Configure the empty state with a message like 'No properties match your search' and include helpful text suggesting the user try different search terms. Show the empty state only after a search has been executed with no results."
         },
         {
           "path": "frontend/src/pages/PropertyDetailsPage.tsx",
           "operation": "modify",
-          "description": "Apply mobile-first responsive layout to property detail sections. Stack content vertically on mobile, use multi-column layouts on larger screens. Ensure all action buttons meet minimum touch target sizes. Scale typography across breakpoints. Ensure natural content reflow without horizontal scrolling."
-        },
-        {
-          "path": "frontend/src/pages/RegisterPage.tsx",
-          "operation": "modify",
-          "description": "Implement mobile-first form layout with full-width inputs on mobile, constrained width on larger screens. Ensure form buttons meet minimum touch target sizes (h-11 or h-12). Scale form label and input typography appropriately. Prevent horizontal scrolling on small screens."
-        },
-        {
-          "path": "frontend/src/pages/TransferPage.tsx",
-          "operation": "modify",
-          "description": "Apply mobile-first responsive design to transfer form. Ensure inputs and buttons are touch-friendly on mobile. Scale typography across breakpoints. Use appropriate form width constraints on larger screens. Prevent horizontal overflow."
-        },
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Ensure navigation adapts properly between mobile hamburger menu and desktop horizontal nav. Verify mobile menu button meets minimum touch target size (w-11 h-11 or larger). Ensure desktop nav items have adequate spacing. Scale logo and text appropriately across breakpoints."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Implement mobile-first responsive footer layout with stacked sections on mobile, multi-column layout on desktop. Ensure footer links meet touch target requirements on mobile. Scale typography across breakpoints. Prevent horizontal scrolling."
+          "description": "Import and integrate the EmptyState component to display when property details cannot be loaded or when specific sections like ownership history or documents are empty. Configure appropriate messages for each scenario (e.g., 'Property not found', 'No ownership history available'). Ensure error states are visually distinct from empty data states."
         }
       ]
     }

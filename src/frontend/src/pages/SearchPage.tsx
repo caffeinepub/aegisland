@@ -7,37 +7,15 @@ import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Search, MapPin, Loader2 } from 'lucide-react';
 import { useSearchLandRecords } from '../hooks/useQueries';
+import { EmptyState } from '../components/EmptyState';
 
 export default function SearchPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const { data: searchResults, isLoading, isFetching } = useSearchLandRecords(searchQuery);
 
-  const mockResults = [
-    {
-      parcelId: 'LR-2026-001234',
-      location: 'Nairobi, Kenya',
-      area: '2.5 acres',
-      status: 'ACTIVE',
-      owner: 'John Doe',
-    },
-    {
-      parcelId: 'LR-2026-001567',
-      location: 'Mombasa, Kenya',
-      area: '1.2 acres',
-      status: 'ACTIVE',
-      owner: 'Jane Smith',
-    },
-    {
-      parcelId: 'LR-2026-002891',
-      location: 'Kisumu, Kenya',
-      area: '3.8 acres',
-      status: 'PENDING_TRANSFER',
-      owner: 'Robert Johnson',
-    },
-  ];
-
-  const displayResults = searchResults || mockResults;
+  const displayResults = searchResults || [];
   const isSyncing = isFetching && !isLoading;
+  const hasSearched = searchQuery.length > 0;
 
   const SkeletonCard = () => (
     <Card className="overflow-hidden">
@@ -85,7 +63,13 @@ export default function SearchPage() {
         </div>
 
         {/* Results */}
-        {isLoading ? (
+        {!hasSearched ? (
+          <EmptyState
+            icon={Search}
+            title="Start searching"
+            description="Enter a parcel ID, location, or owner name to search for properties in the blockchain registry."
+          />
+        ) : isLoading ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <SkeletonCard key={i} />
@@ -93,7 +77,7 @@ export default function SearchPage() {
           </div>
         ) : displayResults.length > 0 ? (
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {displayResults.map((property) => (
+            {displayResults.map((property: any) => (
               <Card 
                 key={property.parcelId} 
                 className="overflow-hidden border-border/50 shadow-sm transition-all duration-200 hover:scale-[1.02] hover:shadow-lg"
@@ -137,15 +121,11 @@ export default function SearchPage() {
             ))}
           </div>
         ) : (
-          <Card className="border-dashed">
-            <CardContent className="flex flex-col items-center justify-center py-16 text-center">
-              <Search className="mb-4 h-12 w-12 text-muted-foreground/50" />
-              <h3 className="mb-2 text-lg font-medium">No properties found</h3>
-              <p className="text-sm text-muted-foreground">
-                Try adjusting your search query or browse all properties.
-              </p>
-            </CardContent>
-          </Card>
+          <EmptyState
+            icon={Search}
+            title="No properties found"
+            description="No properties match your search criteria. Try adjusting your search terms or browse all available properties."
+          />
         )}
       </div>
     </div>

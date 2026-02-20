@@ -1,178 +1,74 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-20T21:42:43.357Z",
+  "generatedAt": "2026-02-20T21:58:22.228Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 9,
-    "implemented": 9,
+    "total": 5,
+    "implemented": 5,
     "items": [
       {
-        "id": "REQ-16",
-        "summary": "Update frontend/src/index.css and frontend/tailwind.config.js to implement a refined color palette with subtle gradients and elevated depth matching modern design systems, using softer neutrals, elevated shadows (with multiple layers), and sophisticated color tokens that avoid bright primary colors in favor of understated elegance",
+        "id": "REQ-25",
+        "summary": "Remove all mock data from frontend/src/pages/DashboardPage.tsx including hardcoded land records, pending transfers, and recent activity arrays, replacing them with actual data from useQueries hooks or empty state components when no data exists",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js"
+          "frontend/src/pages/DashboardPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js"
+          "frontend/src/pages/DashboardPage.tsx"
         ]
       },
       {
-        "id": "REQ-17",
-        "summary": "Refine all page components (HomePage.tsx, DashboardPage.tsx, SearchPage.tsx, PropertyDetailsPage.tsx, RegisterPage.tsx, TransferPage.tsx) with polished spacing using consistent padding scale (4, 8, 12, 16, 24, 32, 48, 64px), refined typography hierarchy with proper font weights and line heights, and generous whitespace between sections",
+        "id": "REQ-26",
+        "summary": "Remove all mock data fallbacks from frontend/src/pages/PropertyDetailsPage.tsx including hardcoded ownership history, document lists, and verification status, ensuring the component only displays data from backend queries or shows appropriate empty states",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx",
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx"
+          "frontend/src/pages/PropertyDetailsPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx",
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx"
+          "frontend/src/pages/PropertyDetailsPage.tsx"
         ]
       },
       {
-        "id": "REQ-18",
-        "summary": "Add smooth micro-interactions and polished animations to all interactive elements including buttons, cards, form inputs, and navigation items with subtle scale transforms on hover (scale-[1.02]), smooth color transitions (transition-all duration-200), and tactile feedback using transform and shadow changes",
+        "id": "REQ-27",
+        "summary": "Remove all mock data from frontend/src/pages/SearchPage.tsx including hardcoded search results arrays, replacing them with actual search query results or empty state displays when no properties match the search criteria",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx",
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/Footer.tsx"
+          "frontend/src/pages/SearchPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx",
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/Footer.tsx"
+          "frontend/src/pages/SearchPage.tsx"
         ]
       },
       {
-        "id": "REQ-19",
-        "summary": "Enhance Header.tsx and Footer.tsx with refined layouts including proper alignment, balanced spacing, subtle backdrop blur effects for the header, and refined mobile responsiveness with smooth menu transitions",
+        "id": "REQ-28",
+        "summary": "Remove any stubbed or mock responses from frontend/src/hooks/useQueries.ts, ensuring all query hooks make genuine calls to the backend actor without fallback mock data",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/Footer.tsx"
+          "frontend/src/hooks/useQueries.ts"
         ],
         "matchedFiles": [
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/Footer.tsx"
+          "frontend/src/hooks/useQueries.ts"
         ]
       },
       {
-        "id": "REQ-20",
-        "summary": "Refine form components in RegisterPage.tsx and TransferPage.tsx with polished input styling including refined borders, proper focus rings with brand colors, floating labels or clear placeholder text, inline validation feedback with smooth transitions, and cohesive button styling matching the overall design system",
+        "id": "REQ-29",
+        "summary": "Add appropriate empty state components to DashboardPage.tsx, SearchPage.tsx, and PropertyDetailsPage.tsx that display user-friendly messages and call-to-action buttons when no data is available",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-21",
-        "summary": "Add skeleton loading states to all data-fetching components (DashboardPage.tsx, SearchPage.tsx, PropertyDetailsPage.tsx) using shimmer animations and content placeholders that match the final content structure, ensuring smooth transitions from loading to loaded states",
-        "status": "implemented",
-        "plannedFiles": [
+          "frontend/src/components/EmptyState.tsx",
           "frontend/src/pages/DashboardPage.tsx",
           "frontend/src/pages/SearchPage.tsx",
           "frontend/src/pages/PropertyDetailsPage.tsx"
         ],
         "matchedFiles": [
+          "frontend/src/components/EmptyState.tsx",
           "frontend/src/pages/DashboardPage.tsx",
           "frontend/src/pages/SearchPage.tsx",
           "frontend/src/pages/PropertyDetailsPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-22",
-        "summary": "Implement smooth page transitions and scroll behaviors across all routes in App.tsx using CSS transitions or animation libraries, with fade-in effects for new page content and smooth scrolling for in-page navigation",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/App.tsx",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx",
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/App.tsx",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx",
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-23",
-        "summary": "Refine card components across all pages with elevated shadows, subtle border radius (rounded-lg or rounded-xl), proper internal padding, and hover states that include scale and shadow transitions to create depth and interactivity",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx"
-        ]
-      },
-      {
-        "id": "REQ-24",
-        "summary": "Enhance responsive design across all pages to ensure layouts adapt gracefully to different screen sizes with appropriate breakpoints (sm, md, lg, xl, 2xl), mobile-first design patterns, and touch-friendly interface elements with adequate tap target sizes (minimum 44x44px)",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx",
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/pages/DashboardPage.tsx",
-          "frontend/src/pages/SearchPage.tsx",
-          "frontend/src/pages/PropertyDetailsPage.tsx",
-          "frontend/src/pages/RegisterPage.tsx",
-          "frontend/src/pages/TransferPage.tsx",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/Footer.tsx"
         ]
       }
     ]
@@ -182,17 +78,11 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/App.tsx",
-    "frontend/src/components/Footer.tsx",
-    "frontend/src/components/Header.tsx",
-    "frontend/src/index.css",
+    "frontend/src/components/EmptyState.tsx",
+    "frontend/src/hooks/useQueries.ts",
     "frontend/src/pages/DashboardPage.tsx",
-    "frontend/src/pages/HomePage.tsx",
     "frontend/src/pages/PropertyDetailsPage.tsx",
-    "frontend/src/pages/RegisterPage.tsx",
     "frontend/src/pages/SearchPage.tsx",
-    "frontend/src/pages/TransferPage.tsx",
-    "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
